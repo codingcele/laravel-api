@@ -12,6 +12,7 @@
                 </a>
             </h3>
         </div>
+        <a href="{{ route('movie.create') }}">ADD NEW MOVIE</a>
         @foreach ($genres as $genre)
             <h3>
                 {{ $genre -> name }}

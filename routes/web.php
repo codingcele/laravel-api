@@ -20,3 +20,7 @@ Route::get('/', [MainController::class, 'homeMovie']) -> name('home.movie');
 Route::get('/moviesbygenre', [MainController::class, 'homeGenre']) -> name('home.genre');
 
 Route::get('/movie/delete/{movie}', [MainController::class, 'homeDelete']) -> name('home.delete');
+
+Route::get('/movie/create', [MainController::class, 'movieCreate']) -> name('movie.create');
+
+Route::post('/movie/create/store', [MainController::class, 'productStore']) -> name('product.store');
