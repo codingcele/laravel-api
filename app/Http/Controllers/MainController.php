@@ -31,7 +31,7 @@ class MainController extends Controller
 
         $movie -> delete();
 
-        return redirect() -> route('home.movie');
+        return back();
 
     }
 }
