@@ -8,5 +8,5 @@
     <h5>
         {{ $movie -> cashOut }}
     </h5>
-    <a href="">MODIFY</a> - <a href="{{ route('home.delete', $movie) }}">DELETE</a>
+    <a href="{{ route('movie.edit', $movie) }}">MODIFY</a> - <a href="{{ route('movie.delete', $movie) }}">DELETE</a>
 </li>

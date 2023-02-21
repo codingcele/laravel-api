@@ -5,7 +5,7 @@
         <h1>
             ADD NEW MOVIE
         </h1>
-        <form action="{{ route('product.store') }}" method="POST">
+        <form action="{{ route('movie.store') }}" method="POST">
             @csrf
             <label for="name">Name</label>
             <input type="text" name="name">

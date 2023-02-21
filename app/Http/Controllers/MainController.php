@@ -35,6 +35,7 @@ class MainController extends Controller
         return back();
 
     }
+
     public function movieCreate() {
 
         $genres = Genre::all();
@@ -44,7 +45,7 @@ class MainController extends Controller
 
     }
 
-    public function productStore(Request $request) {
+    public function movieStore(Request $request) {
 
         $data = $request -> validate([
             'name' => 'required|string|max:64',
@@ -65,6 +66,41 @@ class MainController extends Controller
         
         $tags = Tag :: find($data['tags']);
         $movie -> tags() -> attach($tags);
+
+        return redirect() -> route('home.movie');
+
+    }
+
+    public function movieEdit(Movie $movie) {
+
+        $genres = Genre::all();
+        $tags = Tag::all();
+
+        return view('pages.edit', compact('movie', 'genres', 'tags'));
+
+    }
+
+    public function movieUpdate(Request $request, Movie $movie) {
+
+        $data = $request -> validate([
+            'name' => 'required|string|max:64',
+            'year' => 'required|integer',
+            'cashOut' => 'required|integer',
+            'genre_id' => 'required|integer',
+            'tags' => 'required|array',
+        ]);
+
+
+
+        $movie -> update($data);
+
+        $genre = Genre :: find($data['genre_id']);
+
+        $movie -> genre() -> associate($genre);
+        $movie -> save();
+        
+        $tags = Tag :: find($data['tags']);
+        $movie -> tags() -> sync($tags);
 
         return redirect() -> route('home.movie');
 
