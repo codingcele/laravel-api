@@ -24,4 +24,14 @@ class MainController extends Controller
         return view('pages.homeGenre', compact('genres'));
 
     }
+
+    public function homeDelete(Movie $movie) {
+
+        $movie -> tags() -> sync([]);
+
+        $movie -> delete();
+
+        return redirect() -> route('home.movie');
+
+    }
 }

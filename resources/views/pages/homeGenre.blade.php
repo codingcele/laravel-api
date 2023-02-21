@@ -2,26 +2,23 @@
 
 @section('content')
     <div class="container">
-        <h1>
-            MOVIES BY GENRE:
-        </h1>
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>
+                MOVIES BY GENRE:
+            </h1>
+            <h4>
+                <a href="{{ route('home.movie') }}">
+                    HOME
+                </a>
+            </h3>
+        </div>
         @foreach ($genres as $genre)
             <h3>
                 {{ $genre -> name }}
             </h3>
             <ul>
                 @foreach ($genre -> movies as $movie)
-                    <li>
-                        <h4>
-                            {{ $movie -> name }}
-                        </h4>
-                        <h5>
-                            {{ $movie -> year }}
-                        </h5>
-                        <h5>
-                            {{ $movie -> cashOut }}
-                        </h5>
-                    </li>
+                    @include('components.movie')
                 @endforeach
             </ul>
         @endforeach

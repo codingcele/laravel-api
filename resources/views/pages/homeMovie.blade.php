@@ -12,17 +12,7 @@
         </div>
         <ul>
             @foreach ($movies as $movie)
-                <li>
-                    <h3>
-                        {{ $movie -> name }}
-                    </h3>
-                    <h5>
-                        {{ $movie -> year }}
-                    </h5>
-                    <h5>
-                        {{ $movie -> cashOut }}
-                    </h5>
-                </li>
+                @include('components.movie')
             @endforeach
         </ul>
     </div>
