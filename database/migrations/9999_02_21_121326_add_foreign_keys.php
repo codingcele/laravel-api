@@ -39,7 +39,7 @@ return new class extends Migration
     {
         Schema::table('movies', function (Blueprint $table) {
 
-            $table -> dropForeign('product_genre_id_foreign');
+            $table -> dropForeign('movie_genre_id_foreign');
 
         });
 
