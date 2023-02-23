@@ -8,3 +8,5 @@ use App\Http\Controllers\ApiController;
 
 
 Route::get('/v1/movie/all', [ApiController::class, 'movieAll']);
+
+Route::get('/v1/movie/delete/{movie}', [ApiController :: class, 'movieDelete']);

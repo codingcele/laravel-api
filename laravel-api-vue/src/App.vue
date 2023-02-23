@@ -28,6 +28,19 @@ export default {
 
   methods: {
 
+    deleteClick(id) {
+      axios.get(API_URL + 'movie/delete/' + id)
+        .then(res => {
+          const data = res.data;
+          const success = data.success;
+
+          if (success) {
+            this.updateMovies();
+          }
+        })
+        .catch(err => console.error(err));
+    },
+
     updateMovies() {
       axios.get(API_URL + 'movie/all')
         .then(res => {
@@ -61,7 +74,7 @@ export default {
       <li v-for="movie in movies" :key="movie.id">
         {{ movie.name }}
         <br>
-        <a href="">UPDATE</a> - <a href="">DELETE</a>
+        <button @click="deleteClick(movie.id)">DELETE</button>
       </li>
     </ul>
   </div>
