@@ -7,4 +7,4 @@ use App\Http\Controllers\ApiController;
 
 
 
-Route::get('/v1/test', [ApiController::class, 'test']);
+Route::get('/v1/movie/all', [ApiController::class, 'movieAll']);
