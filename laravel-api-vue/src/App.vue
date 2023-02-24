@@ -20,10 +20,18 @@ export default {
       movie_genre: '',
       movie_tags: [],
 
+      movie_creating: false,
+
     }
   },
 
   methods: {
+
+    switchCreateMovie() {
+
+      this.movie_creating = !this.movie_creating;
+
+    },
 
     createMovie(e) {
 
@@ -76,6 +84,8 @@ export default {
       this.movie_genre = '';
       this.movie_tags = [];
 
+      this.switchCreateMovie();
+
     },
 
     updateMovies() {
@@ -112,7 +122,7 @@ export default {
     <h1>
       Movies:
     </h1>
-    <form>
+    <form v-if="movie_creating">
       <label for="name">Name</label>
       <input type="text" name="name" v-model="movie_name">
       <br>
@@ -137,7 +147,9 @@ export default {
         <br>
       </div>
       <input @click="createMovie" type="submit" value="CREATE NEW MOVIE">
+      <button @click="switchCreateMovie" class="ml-4px">CANCEL</button>
     </form>
+    <button v-else @click="switchCreateMovie">ADD NEW MOVIE</button>
     <ul>
       <li v-for="movie in movies" :key="movie.id">
         {{ movie.name }}
@@ -148,4 +160,8 @@ export default {
   </div>
 </template>
 
-<style></style>
+<style>
+.ml-4px {
+  margin-left: 4px;
+}
+</style>
